@@ -9,6 +9,24 @@
   <body>
     <h1>Welcome to the forum!</h1>
     <p>Talk about stuff here.</p>
+    <div id="new-post">
+      <form action="/new" method="POST">
+        <input
+          type="text"
+          name="title"
+          id="new-title"
+          placeholder="Post Title"
+        />
+        <input
+          type="text"
+          name="author"
+          id="new-author"
+          placeholder="Your name"
+        />
+        <textarea name="content"></textarea>
+        <input type="submit">
+      </form>
+    </div>
     <div id="posts">This is where posts will go.</div>
   </body>
   <hr />

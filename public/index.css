@@ -8,3 +8,34 @@ body {
 a {
   color: white;
 }
+
+.post {
+    background-color: grey;
+    width: 500px;
+    border-radius: 10px;
+    margin: auto;
+    color: black;
+}
+
+.title {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.author {
+    font-size: 12pt;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.date {
+    font-size: 8pt;
+    font-style: italic;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.content {
+    font-size: 12pt;
+}
