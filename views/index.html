@@ -6,29 +6,33 @@
     <link rel="stylesheet" href="/../public/index.css" type="text/css" />
     <title>Forum!</title>
   </head>
+  <div id="modal-overlay"></div>
   <body>
     <h1>Welcome to the forum!</h1>
     <p>Talk about stuff here.</p>
+    <button onclick="createPost()">Create Post</button>
+    <div id="posts">This is where posts will go.</div>
     <div id="new-post">
       <form action="/new" method="POST">
-        <input
+        <p><label for="new-title">Post Title:<input
           type="text"
           name="title"
           id="new-title"
           placeholder="Post Title"
-        />
-        <input
+        /></label></p>
+        <p><label for="new-author">Your name:<input
           type="text"
           name="author"
           id="new-author"
           placeholder="Your name"
-        />
-        <textarea name="content"></textarea>
-        <input type="submit">
+        /></label></p>
+        <p><label for="new-content">Post Content:</label></p><textarea id="new-content" name="content"></textarea>
+        <input type="submit" />
       </form>
     </div>
-    <div id="posts">This is where posts will go.</div>
+ 
   </body>
+
   <hr />
   <footer>
     &copy; <a href="https://www.nhcarrigan.com">Nicholas Carrigan</a>

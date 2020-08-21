@@ -10,32 +10,50 @@ a {
 }
 
 .post {
-    background-color: grey;
-    width: 500px;
-    border-radius: 10px;
-    margin: auto;
-    color: black;
+  background-color: grey;
+  width: 500px;
+  border-radius: 10px;
+  margin: auto;
+  color: black;
 }
 
 .title {
-    font-size: 20pt;
-    font-weight: bold;
-    margin-bottom: 0;
+  font-size: 20pt;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .author {
-    font-size: 12pt;
-    margin-bottom: 0;
-    margin-top: 0;
+  font-size: 12pt;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .date {
-    font-size: 8pt;
-    font-style: italic;
-    margin-bottom: 0;
-    margin-top: 0;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .content {
-    font-size: 12pt;
+  font-size: 12pt;
+}
+
+#modal-overlay {
+  z-index: 1;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  opacity: 75%;
+  display: none;
+}
+
+#new-post {
+  z-index: 2;
+  position: fixed;
+  background-color: grey;
+  display: none;
 }

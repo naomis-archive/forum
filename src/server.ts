@@ -35,7 +35,6 @@ app.get("/posts", async (req, res) => {
 });
 
 app.post("/reply/:postID", async (req, res) => {
-  console.log(req.body);
   const reply = {
     author: req.body.replyname,
     date: new Date(Date.now()).toLocaleDateString(),
@@ -58,6 +57,11 @@ app.post("/new", (req, res) => {
     replies: [],
   });
   newPost.save();
+  res.redirect("/");
+});
+
+app.post("/delete/:postID", async (req, res) => {
+  await Post.findOneAndDelete({ _id: req.params.postID });
   res.redirect("/");
 });
 
