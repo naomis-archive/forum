@@ -10,35 +10,57 @@
   <body>
     <h1>Welcome to the forum!</h1>
     <p>Talk about stuff here.</p>
-    <button onclick="createPost()">Create Post</button>
+    <button id="createpost">Create Post</button>
     <div id="posts">This is where posts will go.</div>
     <div id="new-post">
       <form action="/new" method="POST">
-        <p><label for="new-title">Post Title:<input
-          type="text"
-          name="title"
-          id="new-title"
-          placeholder="Post Title"
-        /></label></p>
-        <p><label for="new-author">Your name:<input
-          type="text"
-          name="author"
-          id="new-author"
-          placeholder="Your name"
-        /></label></p>
-        <p><label for="new-content">Post Content:</label></p><textarea id="new-content" name="content"></textarea>
+        <p>
+          <label for="new-title"
+            >Post Title:<input
+              type="text"
+              name="title"
+              id="new-title"
+              placeholder="Post Title"
+          /></label>
+        </p>
+        <p>
+          <label for="new-author"
+            >Your name:<input
+              type="text"
+              name="author"
+              id="new-author"
+              placeholder="Your name"
+          /></label>
+        </p>
+        <p><label for="new-content">Post Content:</label></p>
+        <textarea id="new-content" name="content"></textarea>
+        <hr />
         <input type="submit" />
       </form>
     </div>
- 
+    <div id="new-reply">
+      <form name="replyform" id="replyform" method="POST">
+        <p>
+          <label for="replyname"
+            >Your name:<input
+              type="text"
+              id="replyname"
+              name="replyname"
+              placeholder="Your Name"
+          /></label>
+        </p>
+        <p>Post Content:</p>
+        <textarea name="replycontent"></textarea>
+        <hr />
+        <input type="submit" />
+      </form>
+    </div>
   </body>
 
   <hr />
   <footer>
     &copy; <a href="https://www.nhcarrigan.com">Nicholas Carrigan</a>
   </footer>
-  <script>
-    var exports = { __esModule: true };
-  </script>
+  <script src="../public/exports.js"></script>
   <script src="../public/index.js"></script>
 </html>

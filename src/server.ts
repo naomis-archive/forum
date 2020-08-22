@@ -4,6 +4,8 @@ import mongoose, { Mongoose } from "mongoose";
 import dotenv from "dotenv";
 import { Post, PostInt } from "./interfaces/PostInt";
 import bodyParser from "body-parser";
+import helmet from "helmet";
+import xss from "xss";
 dotenv.config();
 const app: Express = express();
 
@@ -18,6 +20,7 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected!"));
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public", express.static(path.join(__dirname + "/../public")));
@@ -36,9 +39,9 @@ app.get("/posts", async (req, res) => {
 
 app.post("/reply/:postID", async (req, res) => {
   const reply = {
-    author: req.body.replyname,
+    author: xss(req.body.replyname),
     date: new Date(Date.now()).toLocaleDateString(),
-    content: req.body.replycontent,
+    content: xss(req.body.replycontent),
   };
   await Post.findOneAndUpdate(
     { _id: req.params.postID },
@@ -50,10 +53,10 @@ app.post("/reply/:postID", async (req, res) => {
 app.post("/new", (req, res) => {
   console.log(req.body);
   const newPost = new Post({
-    title: req.body.title,
-    author: req.body.author,
+    title: xss(req.body.title),
+    author: xss(req.body.author),
     date: new Date(Date.now()).toLocaleDateString(),
-    content: req.body.content,
+    content: xss(req.body.content),
     replies: [],
   });
   newPost.save();
