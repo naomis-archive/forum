@@ -18,17 +18,25 @@ const createReply = (id: string) => {
   document.getElementById("replyform")?.setAttribute("action", `/reply/${id}`);
 };
 
+const hideModal = () => {
+  document
+    .getElementById("modal-overlay")
+    ?.setAttribute("style", "display: none");
+  document.getElementById("new-reply")?.setAttribute("style", "display: none");
+  document.getElementById("new-post")?.setAttribute("style", "display: none");
+};
+
 const getPosts = async () => {
   const data = await fetch("/posts");
   const parsedData = await data.json();
   parsedData.forEach((el: PostInt) => {
     let replyHTML = "";
-    const deleteButton = `<form action="/delete/${el._id}" method="POST"><button type="submit">Delete Post</button></form>`;
+    const deleteButton = `<form action="/delete/${el._id}" method="POST"><input type="password" name="adminpass" placeholder="Admin Password"><button type="submit">Delete Post</button></form>`;
     const replyForm = `<button class="replybutton" id="${el._id}">Add Reply</button>`;
     el.replies.forEach((reply) => {
-      replyHTML += `<hr><p class="reply-header">${reply.author} - ${reply.date}</p><p class="reply-content">${reply.content}</p>`;
+      replyHTML += `<hr><p class="reply-header nomargin"><span class="author">${reply.author}</span> - <span class="date">${reply.date}</span></p><p class="reply-content">${reply.content}</p>`;
     });
-    postContainer.innerHTML += `<div class="post">${deleteButton}<p class="title">${el.title}</p><p class="author">${el.author}</p><p class="date">${el.date}</p><p class="content">${el.content}</p>${replyHTML}<hr>${replyForm}</div>`;
+    postContainer.innerHTML += `<div class="post"><p class="title">${el.title}</p><p class="nomargin"><span class="author">${el.author}</span> - <span class="date">${el.date}</span></p><p class="content">${el.content}</p>${replyHTML}<hr>${replyForm}${deleteButton}</div>`;
     document
       .getElementById(el._id as string)
       ?.addEventListener("click", () => createReply(el._id as string));
@@ -42,3 +50,6 @@ getPosts().then(() => {
   }
 });
 createButton.addEventListener("click", () => createPost());
+document
+  .getElementById("modal-overlay")
+  ?.addEventListener("click", () => hideModal());

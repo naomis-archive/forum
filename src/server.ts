@@ -51,7 +51,6 @@ app.post("/reply/:postID", async (req, res) => {
 });
 
 app.post("/new", (req, res) => {
-  console.log(req.body);
   const newPost = new Post({
     title: xss(req.body.title),
     author: xss(req.body.author),
@@ -64,7 +63,9 @@ app.post("/new", (req, res) => {
 });
 
 app.post("/delete/:postID", async (req, res) => {
-  await Post.findOneAndDelete({ _id: req.params.postID });
+  if (req.body.adminpass === process.env.ADMIN) {
+    await Post.findOneAndDelete({ _id: req.params.postID });
+  }
   res.redirect("/");
 });
 

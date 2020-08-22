@@ -4,7 +4,9 @@
   "description": "A basic forum application",
   "main": "server.js",
   "scripts": {
-    "start": "node ./src/server.js"
+    "build": "tsc",
+    "start": "node ./src/server.js",
+    "dev": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
