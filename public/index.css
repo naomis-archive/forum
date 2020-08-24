@@ -1,5 +1,5 @@
 body {
-  background-color: purple;
+  background-color: #4d3d63;
   color: white;
   margin: 0;
   text-align: center;
@@ -9,8 +9,25 @@ a {
   color: white;
 }
 
+hr:not(#bottom) {
+ border: 2px double #4d3d63;
+}
+
+button, input, textarea {
+  margin-bottom: 10px;
+  background-color: #4d3d63;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-family: 'Courier New', Courier, monospace
+}
+
+textarea {
+  resize: none;
+}
+
 .post {
-  background-color: grey;
+  background-color: #b4b2b8;
   width: 500px;
   border-radius: 10px;
   margin: auto;
@@ -19,15 +36,17 @@ a {
 }
 
 .title {
-  font-size: 20pt;
+  font-size: 24pt;
   font-weight: bold;
   margin-bottom: 0;
+  font-family: "Tangerine";
 }
 
 .author {
-  font-size: 12pt;
+  font-size: 10pt;
   margin-bottom: 0;
   margin-top: 0;
+  font-style: italic;
 }
 
 .date {
@@ -39,6 +58,7 @@ a {
 
 .content {
   font-size: 12pt;
+  font-family: "Indie Flower";
 }
 
 .nomargin {
@@ -60,25 +80,25 @@ a {
 #new-post {
   z-index: 2;
   position: fixed;
-  background-color: grey;
+  background-color: #b4b2b8;
   display: none;
   margin-left: auto;
   width: 500px;
-  height: 300px;
   color: black;
   left: 50%;
   transform: translate(-50%, 0);
+  border-radius: 10px;
 }
 
 #new-reply {
   z-index: 2;
   position: fixed;
-  background-color: grey;
+  background-color: #b4b2b8;
   display: none;
   margin-left: auto;
   width: 500px;
-  height: 300px;
   color: black;
   left: 50%;
   transform: translate(-50%, 0);
+  border-radius: 10px;
 }

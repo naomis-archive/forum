@@ -4,12 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/../public/index.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Indie Flower"
+    />
     <title>Forum!</title>
   </head>
   <body>
     <div id="modal-overlay"></div>
-    <h1>Welcome to the forum!</h1>
-    <p>Talk about stuff here.</p>
+    <h1 class="title">Welcome to the forum!</h1>
+    <p class="content">
+      Please make sure you have read our <a href="./welcome">rules</a>!
+    </p>
     <button id="createpost">Create Post</button>
     <div id="new-post">
       <form action="/new" method="POST">
@@ -20,6 +30,7 @@
               name="title"
               id="new-title"
               placeholder="Post Title"
+              maxlength="30"
           /></label>
         </p>
         <p>
@@ -29,12 +40,19 @@
               name="author"
               id="new-author"
               placeholder="Your name"
+              maxlength="30"
           /></label>
         </p>
         <p><label for="new-content">Post Content:</label></p>
-        <textarea id="new-content" name="content"></textarea>
+        <textarea
+          id="new-content"
+          name="content"
+          rows="10"
+          cols="50"
+          maxlength="500"
+        ></textarea>
         <hr />
-        <input type="submit" />
+        <button type="submit">Submit</button>
       </form>
     </div>
     <div id="new-reply">
@@ -46,18 +64,24 @@
               id="replyname"
               name="replyname"
               placeholder="Your Name"
+              maxlength="30"
           /></label>
         </p>
         <p>Post Content:</p>
-        <textarea name="replycontent"></textarea>
+        <textarea
+          name="replycontent"
+          rows="10"
+          cols="50"
+          maxlength="500"
+        ></textarea>
         <hr />
-        <input type="submit" />
+        <button type="submit">Submit</button>
       </form>
     </div>
-    <div id="posts">This is where posts will go.</div>
+    <div id="posts"></div>
   </body>
 
-  <hr />
+  <hr id="bottom" />
   <footer>
     &copy; <a href="https://www.nhcarrigan.com">Nicholas Carrigan</a>
   </footer>

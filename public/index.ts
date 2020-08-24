@@ -31,10 +31,10 @@ const getPosts = async () => {
   const parsedData = await data.json();
   parsedData.forEach((el: PostInt) => {
     let replyHTML = "";
-    const deleteButton = `<form action="/delete/${el._id}" method="POST"><input type="password" name="adminpass" placeholder="Admin Password"><button type="submit">Delete Post</button></form>`;
+    const deleteButton = `<form action="/delete/${el._id}" method="POST"><input type="password" name="adminpass" placeholder="Admin Password"> <button type="submit">Delete Post</button></form>`;
     const replyForm = `<button class="replybutton" id="${el._id}">Add Reply</button>`;
     el.replies.forEach((reply) => {
-      replyHTML += `<hr><p class="reply-header nomargin"><span class="author">${reply.author}</span> - <span class="date">${reply.date}</span></p><p class="reply-content">${reply.content}</p>`;
+      replyHTML += `<hr><p class="reply-header nomargin"><span class="author">${reply.author}</span> - <span class="date">${reply.date}</span></p><p class="content">${reply.content}</p>`;
     });
     postContainer.innerHTML += `<div class="post"><p class="title">${el.title}</p><p class="nomargin"><span class="author">${el.author}</span> - <span class="date">${el.date}</span></p><p class="content">${el.content}</p>${replyHTML}<hr>${replyForm}${deleteButton}</div>`;
     document

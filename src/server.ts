@@ -37,11 +37,19 @@ app.get("/posts", async (req, res) => {
   res.send(postList);
 });
 
+app.get("/welcome", (req, res) => {
+  res.sendFile(path.join(__dirname + "/../views/welcome.html"));
+});
+
+app.get("/agree", (req, res) => {
+  res.redirect("/");
+});
+
 app.post("/reply/:postID", async (req, res) => {
   const reply = {
-    author: xss(req.body.replyname),
+    author: xss(req.body.replyname.substring(0, 30)),
     date: new Date(Date.now()).toLocaleDateString(),
-    content: xss(req.body.replycontent),
+    content: xss(req.body.replycontent.substring(0, 500)),
   };
   await Post.findOneAndUpdate(
     { _id: req.params.postID },
@@ -52,10 +60,10 @@ app.post("/reply/:postID", async (req, res) => {
 
 app.post("/new", (req, res) => {
   const newPost = new Post({
-    title: xss(req.body.title),
-    author: xss(req.body.author),
+    title: xss(req.body.title.substring(0, 30)),
+    author: xss(req.body.author.substring(0, 30)),
     date: new Date(Date.now()).toLocaleDateString(),
-    content: xss(req.body.content),
+    content: xss(req.body.content.substring(0, 500)),
     replies: [],
   });
   newPost.save();
