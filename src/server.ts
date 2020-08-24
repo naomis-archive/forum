@@ -23,7 +23,14 @@ mongoose
 app.use(
   helmet({
     hsts: false,
-    contentSecurityPolicy: { directives: { upgradeInsecureRequests: []} },
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "example.com"],
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+      },
+    },
   })
 );
 app.use(bodyParser.json());
