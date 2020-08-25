@@ -28,7 +28,8 @@ textarea {
 
 .post {
   background-color: #b4b2b8;
-  width: 500px;
+  width: 100vw;
+  max-width: 500px;
   border-radius: 10px;
   margin: auto;
   margin-bottom: 10px;
@@ -83,7 +84,8 @@ textarea {
   background-color: #b4b2b8;
   display: none;
   margin-left: auto;
-  width: 500px;
+  width: 100vw;
+  max-width: 500px;
   color: black;
   left: 50%;
   transform: translate(-50%, 0);
@@ -96,7 +98,8 @@ textarea {
   background-color: #b4b2b8;
   display: none;
   margin-left: auto;
-  width: 500px;
+  width: 100vw;
+  max-width: 500px;
   color: black;
   left: 50%;
   transform: translate(-50%, 0);
