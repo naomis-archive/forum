@@ -30,6 +30,7 @@ app.use(
         "script-src": ["'self'"],
         "object-src": ["'none'"],
         "font-src": ["'self'", "fonts.gstatic.com"],
+        "style-src-elem": ["'self'", "fonts.gstatic.com"],
       },
     },
   })
