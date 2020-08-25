@@ -20,7 +20,19 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected!"));
 
-app.use(helmet({ expectCt: false, hsts: false }));
+app.use(
+  helmet({
+    expectCt: false,
+    hsts: false,
+    contentSecurityPolicy: {
+      directives: {
+        "default-src": ["'self'"],
+        "script-src": ["'self'", "example.com"],
+        "object-src": ["'none'"],
+      },
+    },
+  })
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
