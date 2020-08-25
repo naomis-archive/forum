@@ -27,8 +27,9 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         "default-src": ["'self'"],
-        "script-src": ["'self'", "example.com"],
+        "script-src": ["'self'"],
         "object-src": ["'none'"],
+        "font-src": ["'self'", "fonts.gstatic.com"],
       },
     },
   })
