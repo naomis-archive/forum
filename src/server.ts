@@ -29,8 +29,7 @@ app.use(
         "default-src": ["'self'"],
         "script-src": ["'self'"],
         "object-src": ["'none'"],
-        "font-src": ["'self'", "fonts.gstatic.com"],
-        "style-src-elem": ["'self'", "fonts.gstatic.com"],
+        "style-src-elem": ["'self'", "fonts.googleapis.com"],
       },
     },
   })
