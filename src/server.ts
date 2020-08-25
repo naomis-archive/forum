@@ -20,12 +20,8 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected!"));
 
-/* app.use(
-  helmet({
-    hsts: false,
-  })
-);
-*/
+app.use(helmet({ expectCt: false, hsts: false }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public", express.static(path.join(__dirname + "/../public")));
