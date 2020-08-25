@@ -10,6 +10,7 @@ import expressSession from "express-session";
 import connectEnsureLogin from "connect-ensure-login";
 import authRoutes from "./routes/auth";
 import postRoutes from "./routes/posts";
+import mainRoutes from "./routes/main";
 dotenv.config();
 const app: Express = express();
 
@@ -61,16 +62,6 @@ passport.deserializeUser(User.deserializeUser());
 //routes
 app.use(authRoutes);
 app.use(postRoutes);
-
-//main page route
-app.get("/", (req, res) => {
-  connectEnsureLogin.ensureLoggedIn();
-  res.sendFile(path.join(__dirname + "/../views/index.html"));
-});
-
-//get landing page
-app.get("/welcome", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../views/welcome.html"));
-});
+app.use(mainRoutes);
 
 app.listen(PORT, () => console.log(`Server running on localhost:${PORT}`));
