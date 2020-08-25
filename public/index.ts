@@ -5,7 +5,7 @@ const createButton: HTMLElement | any = document.getElementById("createpost");
 
 const createPost = () => {
   document.getElementById("modal-overlay")?.classList.add("block");
-  document.getElementById("new-post")?.classList.remove("block");
+  document.getElementById("new-post")?.classList.add("block");
 };
 
 const createReply = (id: string) => {
