@@ -40,9 +40,6 @@ const getPosts = async () => {
     document
       .getElementById(el._id as string)
       ?.addEventListener("click", () => createReply(el._id as string));
-      document
-      .getElementById(el._id as string)
-      ?.addEventListener("touchstart", () => createReply(el._id as string));
   });
 };
 
@@ -50,14 +47,10 @@ getPosts().then(() => {
   const replies = document.getElementsByClassName("replybutton");
   for (let i = 0; i < replies.length; i++) {
     replies[i].addEventListener("click", () => createReply(replies[i].id));
-    replies[i].addEventListener("touchstart", () => createReply(replies[i].id));
   }
 });
+
 createButton.addEventListener("click", () => createPost());
-createButton.addEventListener("touchstart", () => createPost());
 document
   .getElementById("modal-overlay")
   ?.addEventListener("click", () => hideModal());
-  document
-  .getElementById("modal-overlay")
-  ?.addEventListener("touchstart", () => hideModal());
