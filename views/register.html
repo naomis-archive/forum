@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/index.css" type="text/css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <h1 class="title">Register</h1>
+    <p class="content">
+      Thank you for joining our community! Please use the following form to
+      register.
+    </p>
+    <div class="post">
+      <form action="./register" method="POST">
+        <p>
+          <label for="name"
+            >Name: <input name="name" id="name" type="text" required
+          /></label>
+        </p>
+        <p>
+          <label for="username"
+            >Username:
+            <input name="username" id="username" type="text" required
+          /></label>
+        </p>
+        <p>
+          <label for="email"
+            >Email: <input type="email" name="useremail" id="email" required
+          /></label>
+        </p>
+        <p>
+          <label for="pass"
+            >Password:
+            <input type="password" name="password" id="pass" required
+          /></label>
+        </p>
+        <p>
+          <label for="cpass"
+            >Confirm Password:
+            <input type="password" name="cpassword" id="cpass" required
+          /></label>
+        </p>
+        <button type="submit">Register!</button>
+      </form>
+    </div>
+  </body>
+</html>
