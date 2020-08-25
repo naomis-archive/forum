@@ -4,8 +4,7 @@ This project is my attempt to build a basic forum site.
 
 ## Live Version
 
-This page is not yet deployed.
-<!--This page is currently deployed. [View the live website.]()-->
+This page is currently deployed. [View the live website.](http://forum.nhcarrigan.com)
 
 ## Feedback, Bugs, and Contributions
 
