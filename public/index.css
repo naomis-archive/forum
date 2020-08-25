@@ -10,16 +10,18 @@ a {
 }
 
 hr:not(#bottom) {
- border: 2px double #4d3d63;
+  border: 2px double #4d3d63;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
   margin-bottom: 10px;
   background-color: #4d3d63;
   color: white;
   border-radius: 10px;
   border: 2px solid white;
-  font-family: 'Courier New', Courier, monospace
+  font-family: "Courier New", Courier, monospace;
 }
 
 textarea {
@@ -104,4 +106,8 @@ textarea {
   left: 50%;
   transform: translate(-50%, 0);
   border-radius: 10px;
+}
+
+.block {
+  display: block !important;
 }

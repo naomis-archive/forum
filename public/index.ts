@@ -4,26 +4,20 @@ const postContainer: HTMLElement | any = document.getElementById("posts");
 const createButton: HTMLElement | any = document.getElementById("createpost");
 
 const createPost = () => {
-  document
-    .getElementById("modal-overlay")
-    ?.setAttribute("style", "display: block");
-  document.getElementById("new-post")?.setAttribute("style", "display: block");
+  document.getElementById("modal-overlay")?.classList.add("block");
+  document.getElementById("new-post")?.classList.remove("block");
 };
 
 const createReply = (id: string) => {
-  document
-    .getElementById("modal-overlay")
-    ?.setAttribute("style", "display: block");
-  document.getElementById("new-reply")?.setAttribute("style", "display: block");
+  document.getElementById("modal-overlay")?.classList.add("block");
+  document.getElementById("new-reply")?.classList.add("block");
   document.getElementById("replyform")?.setAttribute("action", `/reply/${id}`);
 };
 
 const hideModal = () => {
-  document
-    .getElementById("modal-overlay")
-    ?.setAttribute("style", "display: none");
-  document.getElementById("new-reply")?.setAttribute("style", "display: none");
-  document.getElementById("new-post")?.setAttribute("style", "display: none");
+  document.getElementById("modal-overlay")?.classList.remove("block");
+  document.getElementById("new-reply")?.classList.remove("block");
+  document.getElementById("new-post")?.classList.remove("block");
 };
 
 const getPosts = async () => {
