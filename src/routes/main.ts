@@ -15,7 +15,7 @@ router.get("/welcome", (_, res) => {
 
 //agree route
 router.get("/agree", (_, res) => {
-  res.redirect("/");
+  res.redirect("/register");
 });
 
 export default router;

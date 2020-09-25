@@ -1,46 +1,44 @@
-import { Schema } from "mongoose";
-import AuthRoutes from "passport";
-import { Strategy } from "passport-local";
-import { UserInt, UserModel } from "../interfaces/UserInt";
+import { Router } from "express";
+import passport from "passport";
+import jwt from "jsonwebtoken";
+import path from "path";
 
-const LocalStrategy = Strategy;
+const router = Router();
+const seekrit = process.env.JWT || "null";
 
-AuthRoutes.use(
-  "signup",
-  new LocalStrategy(
-    {
-      usernameField: "username",
-      passwordField: "password",
-    },
-    async (username, password, done) => {
-      try {
-        const user = await UserModel.create({ username, password });
-        return done(null, user);
-      } catch (error) {
-        done(error);
-      }
-    }
-  )
+router.get("/signup", (_, res) => {
+  res.sendFile(path.join(__dirname + "/../../views/register.html"));
+});
+
+router.get("/login", (_, res) => {
+    res.sendFile(path.join(__dirname + "/../../views/login.html"));
+})
+
+router.post(
+  "/signup",
+  passport.authenticate("signup"),
+  async (req, res) => {
+    res.json({ message: "Signup successful!", user: req.user });
+  }
 );
 
-AuthRoutes.use(
-  "login",
-  new LocalStrategy(
-    { usernameField: "username", passwordField: "password" },
-    async (username, password, done) => {
-      try {
-        const user = await UserModel.findOne({ username });
-        if (!user) {
-          return done(null, false, { message: "User not found" });
-        }
-        const validate = await user.isValidLogin(password);
-        if (!validate) {
-          return done(null, false, { message: "Wrong Password" });
-        }
-        return done(null, user, { message: "Login success!" });
-      } catch (error) {
-        return done(error);
+router.post("/login", async (req, res, next) => {
+  passport.authenticate("login", async (err, user, info) => {
+    try {
+      if (err || !user) {
+        const error = new Error("An error occurred");
+        return next(error);
       }
+      req.login(user, { session: false }, async (error) => {
+        if (error) return next(error);
+        const body = { _id: user._id, username: user.username };
+        const token = jwt.sign({ user: body }, seekrit);
+        return res.json({ token });
+      });
+    } catch (error) {
+      return next(error);
     }
-  )
-);
+  })(req, res, next);
+});
+
+export default router;
