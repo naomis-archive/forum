@@ -1,4 +1,4 @@
-BeccaBot Copyright 2020 Nicholas Carrigan(“Licensor”)
+Forum Copyright 2020 Nicholas Carrigan(“Licensor”)
 
 Hippocratic License Version Number: 2.1.
 
